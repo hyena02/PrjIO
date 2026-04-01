@@ -9,7 +9,7 @@ import java.io.IOException;
 public class TextFileScore {
 
 	public static void main(String[] args) throws IOException {
-		String path = "D:/mm/dev/Java/PrjIO/bin/ex02/";
+		String path = "D:/mm/dev/Java/PrjIO/src/ex02/";
 		
 		//입력파일
 		String filename = "data.txt";
@@ -18,14 +18,18 @@ public class TextFileScore {
 		
 		//출력파일
 		String filename2 = "result.txt";
-		FileWriter fw = new FileWriter(path + filename2);
+		FileWriter fw = new FileWriter(path + filename2,true);
+// append : false or 생략 -> 생성되는 파일이 OverWrite 된다 -> 덮어쓴다
+//     		기존파일이 존재하면 덮어쓰고 없으면 새로 만든다.
+// append : true		 -> 생성되는 파일이    Append 된다 -> 내용이 추가된다
+//     		기존파일이 존재하면 추가하고 없으면 새로 만든다.
 		BufferedWriter bw = new BufferedWriter(fw);
 		
 		
 		String line = "";
 		br.readLine();	// 제목줄 skip
 		
-		String title = "번호 이름 국어 영어 수학 총점 평균";
+		String title = "번호 이름 국어 영어 수학 총점 평균\n";
 		System.out.println(title);
 		bw.write(title);
 		
