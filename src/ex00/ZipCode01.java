@@ -1,4 +1,4 @@
-package ex04;
+package ex00;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -16,12 +16,12 @@ import java.util.Scanner;
 //};
 
 
-public class TestZip {
+public class ZipCode01 {
 
 	public static void main(String[] args) throws IOException {
 		String path = "D:/mm/dev/Java/PrjIO/src/ex04/";
 //입력파일
-		String filename = "zipcode_20130201(1).csv";
+		String filename = "zipcode_utf8.csv";
 		FileReader fr = new FileReader(path + filename);
 		BufferedReader br = new BufferedReader(fr);
 		
@@ -44,7 +44,7 @@ public class TestZip {
 		String dong = key[0];
 		String build = input.substring(dong.length()).trim();
 //		String build = key[1];
-		System.out.println("dong  입력 : "+dong);
+		System.out.println("동 입력 : "+dong);
 		System.out.println("build 입력 : "+build);
 
 		
