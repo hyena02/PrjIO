@@ -62,7 +62,7 @@ class ZipcodeMap implements Ipo{
 
 
 
-public class ZipCode055_4 {
+public class ZipCode05_4 {
 //Map 사용
 	public static void main(String[] args) throws IOException {
 		ZipcodeMap zMap = new ZipcodeMap();

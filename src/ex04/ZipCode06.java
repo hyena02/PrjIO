@@ -1,57 +1,47 @@
 package ex04;
-//부산의 부전2동 우편번호만 화면 출력해보기
 
 import java.io.BufferedReader;
-import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Scanner;
-     
+
 public class ZipCode06 {
 
+	@SuppressWarnings("null")
 	public static void main(String[] args) throws IOException {
-//Keyboard 입력		
-		Scanner in = new Scanner(System.in);
+		// 6. 부산의 부전2동 우편번호만 화면 출력
+		String fn 	  = "D:/mm/dev/java/PrjIO/src/ex04/zipcode_utf8.csv";
+		FileReader fr = null; // 초기화를 하지않음 -> null 
+		BufferedReader br = null;
+		br.readLine();		// 제목줄 skip -> IOException 필요 -> add exception try 어쩌고
+		String line = "";
+		try {
+			fr = new FileReader(fn);
+			br = new BufferedReader(fr);
+			while((line = br.readLine()) !=null ) {
+				PostVo postVo = new PostVo (line);
+				String sido = postVo.getSido();
+				String dong = postVo.getDong();
 				
-//File		
-		String path = ZipCode06.class.getResource("").getPath();
-		String fname = "Zipcode_utf8.csv";
-		File file = new File(path + fname);
-		
-		FileReader fr = new FileReader(file);
-		BufferedReader br = new BufferedReader(fr);
-		
-		
-//제목줄 skip
-		String title = br.readLine();	
-		String line = "";  
-		int cnt = 0;
-		
-		System.out.println("읍면동 : ");
-		String inAddr = in.nextLine();
-		System.out.println("우편번호");
-//while
-		
-		while ( (line = br.readLine()) != null) { 
+				if(sido.equals("부산") && dong.equals("부전2동")) {
+					System.out.println( postVo );
+				}//if			
+			}//try
 			
-			String [] li 	= line.trim().split(",");
-			String zipcode	= li[0].trim();
-			String dong 	= li[3].trim();
-			
-//			String sido		= li[1].trim();
-//			String gugun	= li[2].trim();
-//			String bunji	= li[4].trim();
-			int	   seq		= Integer.parseInt(li[5].trim());
+		} catch (FileNotFoundException e) {
+			System.out.println(fn + "파일이 없습니다");
+		} catch (IOException e) {
+			System.out.println("데이터 입력에 문제가 있습니다");
+		} catch (Exception e) {		// 자식이 밑에 있어야함 
+			System.out.println("문제발생" + e.getMessage());
+		} finally {			 // Exception 발생과 상관없이 무조건 실행
+			try {
+				if(br !=null)br.close();
+				if(br !=null)fr.close();
+			} catch (IOException e) {
 
-			if(dong.indexOf("부전2동") > -1 ) {
-				String fmt = "[%-7s]";
-				String addr = String.format(fmt,li[0]);
-				System.out.println(addr);
-				cnt++;
-			}//if		
-		}//while
-		br.close();
-		fr.close();
-		System.out.println("총" + cnt + "건");
+			}			
+		}//finally
+		System.out.println("작업 끝");
 	}//main
 }//class

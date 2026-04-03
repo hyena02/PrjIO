@@ -4,13 +4,16 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.Scanner;
      
 
 //3. 부산, 울산, 대구 우편번호 zipCode 의 갯수
-//	부산:3605		cnt1
-//	대구:820		cnt2
-//	울산:2782		cnt3
+//	sis  	 	cnt
+//	부산:3605		cnt[0]
+//	대구:820		cnt2[1]
+//	울산:2782		cnt3[2]
+//4. 한국의 시도명 출력 - 17건 
 
 public class ZipCode03 {
 
@@ -18,7 +21,16 @@ public class ZipCode03 {
 		
 		Scanner in = new Scanner(System.in);
 		System.out.println("검색할 시도를 입력하세요(부산, 대구, 울산)");
-		String sidos = in.nextLine();
+		String sidos 	= in.nextLine();		//"부산, 대구, 경남"
+		String [] sis 	= sidos.trim().split(",");
+		String [] sidoList = new String[sis.length];
+		int [] cnt = new int[sis.length];
+		
+		for (int i = 0; i < sidoList.length; i++) {
+			sis[i] =sis[i].trim(); 
+			sidoList[i] = sis[i].trim();
+			cnt[i]= 0;
+		}
 		
 		
 //File		
@@ -40,38 +52,32 @@ public class ZipCode03 {
 //		String title = br.readLine();	== > 나중에 제목을 확인하거나 출력할 수도 있으면
 		br.readLine();
 		String line = "";  
-		
-//cnt
-		int cnt1 = 0;	//부산		=>sido가 ㅇㅇ일때 비교 -> 
-		int cnt2 = 0;	//대구
-		int cnt3 = 0;	//울산
-		
-//while
-		
+
+//while		
 		while ( (line = br.readLine()) != null) { 
 			
 			String [] li 	= line.trim().split(",");
-			String zipcode	= li[0].trim();
 			String sido		= li[1].trim();
+			
+			String zipcode	= li[0].trim();
 			String gugun	= li[2].trim();
 			String dong 	= li[3].trim();
 			String bunji	= li[4].trim();
 			int	   seq		= Integer.parseInt(li[5].trim());
 			
 			
-			switch(sido) {
-				case "부산" : cnt1++;	break;
-				case "대구" : cnt2++;	break;
-				case "울산" : cnt3++;	break;
-			}//switch
+			for (int i = 0; i < sis.length; i++) {
+				if(sido.equals(sis[i])) {
+					cnt[i]++;
+				}//if
+			}//for
 
-			
-
-			
 		}//while
-		System.out.println( "부산 : " + cnt1 + "건");
-		System.out.println( "대구 : " + cnt2 + "건");
-		System.out.println( "울산 : " + cnt3 + "건");
+		for (int i = 0; i < cnt.length; i++) {
+			System.out.println( sis[i]+" : " + cnt[i] + "건");
+			
+		}
+
 //닫기 close
 		br.close();
 		fr.close();

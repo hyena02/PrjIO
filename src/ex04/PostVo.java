@@ -49,7 +49,16 @@ public class PostVo {
 		return "PostVo [zipcode=" + zipcode + ", sido=" + sido + ", gugun=" + gugun + ", dong=" + dong + ", bunji="
 				+ bunji + ", seq=" + seq + "]";
 	}
-
+	public String getAddress() {
+		String result ="[" + zipcode+ "]"
+					+ sido  +" "
+					+ gugun + " "
+					+ dong  +" "
+					+ bunji +" "
+					+ seq ;
+					
+		return result;
+	}
 
 
 }//class

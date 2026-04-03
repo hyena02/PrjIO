@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ZipCode055_2 {
+public class ZipCode05_2 {
 				// return잉벗엇어서서서ㅓㅅ void
 	public static void main(String[] args) throws IOException {
 
@@ -18,7 +18,7 @@ public class ZipCode055_2 {
 //			   부산
 //			   ... 
 //			   충북
-		String path = ZipCode055_2.class.getResource("").getPath();
+		String path = ZipCode05_2.class.getResource("").getPath();
 		String fname = "zipcode_utf8.csv";
 		File infile = new File(path+ fname);
 		

@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.TreeSet;
 
-public class ZipCode055_1 {
+public class ZipCode05_1 {
 				// return잉벗엇어서서서ㅓㅅ void
 	public static void main(String[] args) throws IOException {
 
@@ -15,7 +15,7 @@ public class ZipCode055_1 {
 //			   부산 1212
 //			   ...  ??
 //			   충북
-		String path = ZipCode055_1.class.getResource("").getPath();
+		String path = ZipCode05_1.class.getResource("").getPath();
 		String fname = "zipcode_utf8.csv";
 		File infile = new File(path+ fname);
 		

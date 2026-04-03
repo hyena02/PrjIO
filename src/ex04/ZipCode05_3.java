@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Zipcode05_3 {
+public class ZipCode05_3 {
 
    public static void main(String[] args) throws IOException {
        // 4. 한국의 시도명 출력 - 17건 
