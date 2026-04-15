@@ -17,15 +17,18 @@ public class ZipCode08 {
       
       FileReader fr = null;						  		  	  		    //파일읽기 
       FileWriter fw = null;							  		  			//빠르게읽기
-      BufferedReader br = null;						  	  		  		//파일쓰기
+      BufferedReader br = null;										  	//파일쓰기
       BufferedWriter bw = null;						                    //빠르게쓰기
+      //바깥에서 변수 생성 ->	 껍데기만 있음
       
       int cnt	=0;						        					    //몇개 파일 만들었는지 세기 (카운트변수)
       
       try {									      						//에러 날수도 있는 코드 실행 try
              fr  = new FileReader(path + inFname);					    //파일 읽기 시작
-             br = new BufferedReader(fr);							    //더빠르게 읽기 위한 래퍼
-          
+             br  = new BufferedReader(fr);							    //더빠르게 읽기 위한 래퍼
+          // try 안에서 실제 생성 -> 진짜로 파일열고 객체 만들어짐
+          // 이유 : finally 에서 닫아야하기 때문에 
+          // fr 은 try 안에서만 살아있음 -> 지역변수이기 때문에
           br.readLine();								   				//csv 제목 줄 skip
           String line = "";							    				//한 줄씩 담을 변수 준비
           String prevSido = "";						    				//이전 시도 저장용
